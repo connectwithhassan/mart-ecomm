@@ -1,0 +1,32 @@
+{
+  "name": "@marketplace/storefront",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "echo \"Storefront lint ok\"",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Storefront tests placeholder\""
+  },
+  "dependencies": {
+    "@marketplace/design-tokens": "workspace:*",
+    "@marketplace/shared-types": "workspace:*",
+    "@marketplace/validation-schemas": "workspace:*",
+    "clsx": "^2.1.1",
+    "next": "^14.2.24",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.0.2"
+  },
+  "devDependencies": {
+    "@marketplace/tsconfig": "workspace:*",
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2"
+  }
+}

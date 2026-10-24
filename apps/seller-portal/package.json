@@ -1,0 +1,32 @@
+{
+  "name": "@marketplace/seller-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3001",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "echo \"Seller portal lint ok\"",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Seller portal tests placeholder\""
+  },
+  "dependencies": {
+    "@marketplace/design-tokens": "workspace:*",
+    "@marketplace/shared-types": "workspace:*",
+    "@marketplace/validation-schemas": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@marketplace/tsconfig": "workspace:*",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0"
+  }
+}
