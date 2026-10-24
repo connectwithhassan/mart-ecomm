@@ -41,10 +41,19 @@ export const healthRoutes: FastifyPluginAsync = async (fastify) => {
       },
     },
   }, async (_request, reply) => {
+    let cacheStatus = 'ready';
+    try {
+      if (fastify.redis) {
+        await fastify.redis.ping();
+      }
+    } catch {
+      cacheStatus = 'degraded';
+    }
+
     return reply.status(200).send({
       status: 'ready',
       database: 'connected',
-      cache: 'ready',
+      cache: cacheStatus,
       timestamp: new Date().toISOString(),
     });
   });

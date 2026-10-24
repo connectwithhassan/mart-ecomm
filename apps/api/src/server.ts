@@ -1,9 +1,12 @@
 import { buildApp } from './app.js';
 import { loadEnv } from './config/env.js';
+import { QueueManager } from './workers/index.js';
 
 async function startServer(): Promise<void> {
   const env = loadEnv();
   const app = await buildApp(env);
+  const queueManager = new QueueManager(env.REDIS_URL);
+  await queueManager.initialize();
 
   try {
     const address = await app.listen({ port: env.PORT, host: env.HOST });
@@ -20,8 +23,9 @@ async function startServer(): Promise<void> {
     process.on(signal, async () => {
       console.log(`\n🛑 Received ${signal}, starting graceful shutdown...`);
       try {
+        await queueManager.close();
         await app.close();
-        console.log('✅ Server closed cleanly.');
+        console.log('✅ Server and worker queues closed cleanly.');
         process.exit(0);
       } catch (err) {
         console.error('❌ Error during graceful shutdown:', err);
